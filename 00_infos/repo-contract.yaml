@@ -1,0 +1,33 @@
+# repo-contract.yaml — Maschinenlesbarer Vertrag (Kanon v2)
+# Generiert: 2026-03-28 | Schema: v1.0
+# REVIEW ERFORDERLICH: Bitte manuell pruefen und anpassen
+
+contract_version: "1.0"
+
+repo:
+  name: "apps--qr-code-maker"
+  suite: "apps"
+  status: "active"
+
+type:
+  primary: "webapp"
+
+stack:
+  languages: []
+  runtime: "null"
+
+paths:
+  source: "."
+  tests: "87_tests/"
+  docs: "00_infos/"
+  context: "00_infos/llm-context.md"
+  holds: "00_infos/meta/open-questions.md"
+
+commands:
+  test: null
+  test_report: "make test-report"
+
+deployment:
+  deployed: true
+  ci:
+    platform: "woodpecker"
