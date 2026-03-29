@@ -13,8 +13,8 @@ type:
   primary: "webapp"
 
 stack:
-  languages: []
-  runtime: "null"
+  languages: [python, javascript]
+  runtime: "python"
 
 paths:
   source: "."
