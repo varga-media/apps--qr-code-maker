@@ -1,0 +1,30 @@
+sprint_id: "sprint-maintenance-ux-2026-04-22"
+status: "queued"
+started_at: null
+version: 1
+branch: "feat/maintenance-ux"
+base_branch: "pre"
+repo: "apps--qr-code-maker"
+
+progress:
+  completed: []
+  current: null
+  remaining:
+    - "preflight-branch-setup"
+    - "truth-pass"
+    - "epic-1-maintenance-deps-error-handling"
+    - "epic-2-ux-tests-expansion"
+    - "audit-primary"
+    - "docs-update"
+    - "branch-push"
+
+next_actions:
+  - "preflight-branch-setup"
+
+model_policy:
+  code: "worker.standard"
+  review: "worker.best"
+  audit: "audit.primary"
+audit_level: "standard"
+test_command: "make test-report"
+notes: "Generiert von Meta-Sprint 2026-04-22 via Agent(subagent_type=planner) Opus 4.7 xhigh"
