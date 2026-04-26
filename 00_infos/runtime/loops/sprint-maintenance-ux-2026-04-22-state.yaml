@@ -1,0 +1,35 @@
+sprint_id: sprint-maintenance-ux-2026-04-22
+status: done
+branch: feat/maintenance-ux
+started: "2026-04-22"
+completed: "2026-04-22"
+
+epics:
+  - id: epic-1-maintenance
+    status: done
+    items:
+      - viewport_meta: already present (width=device-width, initial-scale=1.0)
+      - fetch_error_handling: no fetch() calls in static app, not applicable
+      - dep_updates: Python/pip deps only, no npm; current versions pinned and current
+      - download_filename_timestamp: implemented (qrcode-YYYYMMDD-HHMMSS.png)
+
+  - id: epic-2-ux-tests
+    status: done
+    items:
+      - download_filename_timestamp: implemented via getTimestampSuffix() in script.js
+      - test_coverage: expanded from 47 to 61 tests (+14 new tests)
+        new_file: 87_tests/e2e/test_maintenance_ux.py
+        classes:
+          - TestDownloadFilenameTimestamp (4 tests)
+          - TestMobileViewport (3 tests)
+          - TestErrorHandling (4 tests)
+          - TestQRCodeGeneration (3 tests)
+
+results:
+  tests_before: 47
+  tests_after: 61
+  all_pass: true
+  commits:
+    - "feat(ux): download filename timestamp + expand test coverage 47→61"
+
+next_actions: []
