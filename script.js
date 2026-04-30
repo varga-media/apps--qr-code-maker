@@ -349,6 +349,15 @@ useGradient.addEventListener('change', () => {
     gradientColor.disabled = !useGradient.checked;
 });
 
+// Generate timestamp string for download filenames: YYYYMMDD-HHMMSS
+function getTimestampSuffix() {
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const date = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}`;
+    const time = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    return `${date}-${time}`;
+}
+
 // Download with Error Handling
 downloadBtn.addEventListener('click', () => {
     try {
@@ -356,7 +365,7 @@ downloadBtn.addEventListener('click', () => {
         if (canvas) {
             const url = canvas.toDataURL('image/png');
             const link = document.createElement('a');
-            link.download = 'qrcode.png';
+            link.download = `qrcode-${getTimestampSuffix()}.png`;
             link.href = url;
             link.click();
         }
