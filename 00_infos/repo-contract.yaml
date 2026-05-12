@@ -1,0 +1,64 @@
+contract_version: "1.0"
+
+# === IDENTITAET ===
+repo:
+  name: "apps--qr-code-maker"
+  description: "Lokaler QR-Code-Generator (client-side Vanilla JS, Docker/nginx)"
+  suite: "apps"
+  status: "active"
+
+# === REPO-TYP ===
+type:
+  primary: "webapp"
+  tags: [frontend, static-site]
+
+# === TECH-STACK ===
+stack:
+  languages: [javascript, html, css]
+  runtime: "static"
+  framework: "none"
+  package_manager: "none"
+  database: "none"
+  test_framework: "playwright"
+
+# === VERZEICHNIS-LAYOUT ===
+paths:
+  source: "."
+  tests: "87_tests/"
+  test_reports: "89_output/test_reports/"
+  docs: "00_infos/"
+  context: "00_infos/llm-context.md"
+  holds: "00_infos/meta/open-questions.md"
+  assets: null
+  archive: "99_archiv/"
+  entrypoint: "index.html"
+
+# === COMMANDS ===
+commands:
+  dev: "open index.html"
+  build: "docker build -t qr-code-maker ."
+  test: "pytest 87_tests/ -v --tb=short"
+  test_report: "make test-report"
+  lint: null
+  smoke: "docker run --rm -p 8888:80 qr-code-maker & sleep 2 && curl -sf http://localhost:8888/health && pkill -f 'docker run'"
+
+# === DEPLOYMENT ===
+deployment:
+  deployed: true
+  mode: "app-local"
+  domain: "qr.varga.media"
+  health_path: "/health"
+  ci:
+    platform: "woodpecker"
+    auto_deploy: true
+    deploy_branches: ["main"]
+
+# === ENV-VARIABLEN ===
+env:
+  required: []
+  optional: []
+
+# === ABHAENGIGKEITEN ===
+depends_on:
+  services: ["traefik", "cloudflare-tunnel"]
+  repos: ["infra--ci-cd"]
